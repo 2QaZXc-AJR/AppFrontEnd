@@ -4,6 +4,7 @@ import CartItem from '../../Model/BasketItem';
 
 const initialState = {
   items: {},
+  totalMrp: 0,
   totalAmount: 0
 };
 
@@ -13,6 +14,8 @@ export default (state = initialState, action) => {
       const addedProduct = action.product;
       const prodPrice = addedProduct.price;
       const prodTitle = addedProduct.title;
+      const prodMrp = addedProduct.mrp;
+      const prodType = addedProduct.type;
       const quantity = action.quantity;
 
       let updatedOrNewCartItem;
@@ -21,16 +24,20 @@ export default (state = initialState, action) => {
         updatedOrNewCartItem = new CartItem(
           state.items[addedProduct.id].quantity + quantity,
           prodPrice,
+          state.items[addedProduct.id].mrp + (prodMrp * quantity),
+          prodType,
           prodTitle,
           state.items[addedProduct.id].sum + (prodPrice * quantity)
         );
       } else {
-        updatedOrNewCartItem = new CartItem(quantity, prodPrice, prodTitle, (prodPrice * quantity));
+        updatedOrNewCartItem = new CartItem(quantity, prodPrice, 
+          (prodMrp * quantity), prodType, prodTitle, (prodPrice * quantity));
       }
       return {
         ...state,
         items: { ...state.items, [addedProduct.id]: updatedOrNewCartItem },
-        totalAmount: state.totalAmount + (prodPrice*quantity)
+        totalMrp: state.totalMrp + (prodMrp * quantity),
+        totalAmount: state.totalAmount + (prodPrice * quantity)
       };
       case REMOVE_FROM_BASKET:
         const selectedCartItem = state.items[action.pid];
@@ -40,6 +47,8 @@ export default (state = initialState, action) => {
           const updatedCartItem = new CartItem(
             selectedCartItem.quantity - 1,
             selectedCartItem.productPrice,
+            selectedCartItem.mrp - selectedCartItem.productMrp,
+            selectedCartItem.type,
             selectedCartItem.productTitle,
             selectedCartItem.sum - selectedCartItem.productPrice
           );
@@ -51,6 +60,7 @@ export default (state = initialState, action) => {
         return {
           ...state,
           items: updatedCartItems,
+          totalMrp: state.totalMrp - selectedCartItem.productMrp,
           totalAmount: state.totalAmount - selectedCartItem.productPrice
         };
         case ADD_ORDER:

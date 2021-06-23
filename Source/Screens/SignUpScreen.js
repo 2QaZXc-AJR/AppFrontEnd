@@ -1,14 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, Button, Text, TextInput, Image } from 'react-native';
 
-const userRegister = () => {
-    console.log('Phone Number');
-}
-
 export default function SignUpScreen({ navigation }) {
+    const userRegister = () => {
+        console.log('Phone Number');
+    }
     return(
         <View Style={styles.container}>
-            <Image source={{uri:''}}/>
             <Text> REGISTER </Text>
             <Text>
                 Enter Phone Number

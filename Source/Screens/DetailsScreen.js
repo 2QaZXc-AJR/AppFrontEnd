@@ -16,10 +16,15 @@ export default function DetailsScreen( {route, navigation} ) {
             <View style={{margin: 5}}>
                 <Image style={styles.image} source={{ uri: selectedProduct.imageUrl }} />
                 <Text style={styles.title}>
-                    {selectedProduct.title} from {selectedProduct.storeName.toUpperCase()} 
+                    {selectedProduct.title}
                 </Text>
-                <Text style={styles.mrp}>MRP: ₹ </Text>
-                <Text style={styles.price}>Discount: %</Text>
+                {selectedProduct.mrp != selectedProduct.price 
+                ?<Text style={styles.mrp}>MRP: ₹ {selectedProduct.mrp}</Text>: null}
+                {((selectedProduct.mrp - selectedProduct.price) / selectedProduct.mrp) * 100 > 0
+                ? <Text style={styles.price}>
+                    Discount: {(((selectedProduct.mrp - selectedProduct.price) / selectedProduct.mrp) * 100)
+                    .toFixed(2)} %</Text> 
+                : <Text style={styles.price}> No Discount Available </Text>}
                 <Text style={styles.payable}>Price: ₹ {selectedProduct.price} </Text>
                 <Text style={styles.quant}>Select quantity</Text>
                 <View style={styles.select}>

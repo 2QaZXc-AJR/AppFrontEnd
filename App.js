@@ -1,11 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
-
-import LocationScreen from './Source/Screens/LocationScreen';
 
 import productReducer from './Source/Reducer/Products';
 import cartReducer from './Source/Reducer/Basket';
@@ -24,7 +21,7 @@ const store = createStore(rootReducer, applyMiddleware(ReduxThunk))
 
 export default function App() {
   return (
-    <Provider store={store} styl={styles.container}>
+    <Provider store={store} style={styles.container}>
       <AppNavigation />
     </Provider>
   );

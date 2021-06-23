@@ -3,11 +3,10 @@ import { View,
         Text, 
         Image, 
         StyleSheet, 
-        Button, 
         TouchableOpacity} 
 from 'react-native';
 
-export default function ProductItem(props) {
+export default function HomeItems(props) {
     return(
         <View style={styles.product}>
           <TouchableOpacity onPress={props.onViewDetails}>
@@ -16,19 +15,7 @@ export default function ProductItem(props) {
             </View>
             <View style={styles.details}>
                 <Text style={styles.title}>{props.title.substring(0, 15)}</Text>
-                <Text style={styles.price}>
-                  ₹ {props.price}{' '}
-                  <Text style={styles.mrp}>
-                    mrp
-                  </Text>
-                  <Text style={styles.price}>
-                    {' '}ab%
-                  </Text>
-                </Text>
             </View>
-            <View style={styles.actions}>
-                <Button title="To Basket" onPress={props.toBasket} />
-            </View> 
           </TouchableOpacity> 
         </View>
     );
@@ -43,13 +30,15 @@ const styles = StyleSheet.create({
       elevation: 5,
       borderRadius: 1,
       backgroundColor: 'white',
-      height: 280,
+      height: 200,
       width: '49.4%',
-      margin: 1
+      marginBottom: 20,
+      marginTop: 5,
+      marginHorizontal: 1
     },
     imageContainer: {
       width: '100%',
-      height: '60%',
+      height: '80%',
       borderTopLeftRadius: 1,
       borderTopRightRadius: 1,
       overflow: 'hidden'
@@ -67,21 +56,5 @@ const styles = StyleSheet.create({
       fontSize: 15,
       marginVertical: 4
     },
-    price: {
-      color: 'green',
-      fontSize: 12,
-    },
-    mrp: {
-      textDecorationStyle: 'solid',
-      textDecorationLine: 'line-through',
-      fontSize: 12,
-      color: '#888'
-    },
-    actions: {
-      //flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '25%',
-      paddingHorizontal: 20
-    }
 });
+  

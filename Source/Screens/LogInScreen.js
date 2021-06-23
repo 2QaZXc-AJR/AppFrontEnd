@@ -1,30 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, StyleSheet, Button, Text } from 'react-native';
+import { Input } from 'react-native-elements';
 
-const logInAction = () => {
-    navigation.navigate("Home", {Screen: "HomeScreen"});
-}
 
-const signUpAction = () => {
-    navigation.navigate("SignUp", {Screen: "SignUpScreen"});
-}
 
 export default function LogInScreen({ navigation }) {
+    const logInAction = () => {
+        console.log(phone);
+        const response = fetch (`http://localhost:8080/api/login/${phone}`);
+        console.log(response);
+        setPhone('');
+    }
+    
+    const signUpAction = () => {
+        navigation.navigate("SignUp", {Screen: "SignUpScreen"});
+    }
+    const [token, setToken] = useState('');
+    const [phone, setPhone] = useState('');
     return(
         <View Style={styles.container}>
-            <Text>
-                Log In Screen.
-            </Text>
-            <Button title='Sign Up' onPress={signUpAction} />
-            <Button title='Login' onPress={logInAction}/>
+            <View style={{marginTop: 70, justifyContent: 'center'}}>
+                <Input 
+                placeholder='Enter Phone Number' 
+                keyboardType="number-pad"
+                value={phone}
+                onChangeText={text => {setPhone(text)}}/>
+                <Button title='Sign Up' onPress={signUpAction} />
+                <View style={{marginTop: 10}}>
+                    <Button title='Get OTP' onPress={logInAction} />
+                </View>
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: 'black',
-        flex: 1,
+        margin: 20,
         justifyContent: 'center',
         alignItems: 'center'
     }

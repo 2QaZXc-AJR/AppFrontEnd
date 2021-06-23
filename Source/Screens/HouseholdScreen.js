@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import { StyleSheet, FlatList, ToastAndroid, View, Text, ActivityIndicator } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { Ionicons } from '@expo/vector-icons';
 
 import ProductItem from '../Components/ProductItem';
 import * as cartActions from '../Actions/Basket';
 import * as productActions from '../Actions/Products';
 
-export default function HomeScreen( {route, navigation} ) {
+export default function HouseholdScreen( {route, navigation} ) {
     function filterByType(obj) {
-        if(obj.type.toLowerCase() == 'grocery') {
+        if(obj.subType.toLowerCase() == 'household') {
             return true;
         }
     }
@@ -81,19 +80,3 @@ const styles = StyleSheet.create({
         backgroundColor: '#add8e6'
     }
 });
-
-export const groceryScreenOptions = navData => {
-    return {
-        title: "Grocery", 
-        headerTitleAlign: 'center', 
-        headerTitleStyle: {fontWeight: 'bold'},
-        headerLeft: () => (
-            <Ionicons name={'menu'} size={25} style={{marginLeft: 10}}
-            onPress={() => {navData.navigation.toggleDrawer();}}/>
-        ),
-        headerRight: () => (
-            <Ionicons name={'search'} size={25} style={{marginRight: 10}}    
-            onPress={() => {navData.navigation.navigate("Search");}}/>
-        )
-    };
-  };

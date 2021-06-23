@@ -17,13 +17,14 @@ export default function ProductItem(props) {
             <View style={styles.details}>
                 <Text style={styles.title}>{props.title.substring(0, 15)}</Text>
                 <Text style={styles.price}>
-                  ₹ {props.price}{' '}
-                  <Text style={styles.mrp}>
-                    mrp
-                  </Text>
-                  <Text style={styles.price}>
-                    {' '}ab%
-                  </Text>
+                  ₹ {props.price}{'   '}
+                {props.mrp != props.price ?<Text style={styles.mrp}>
+                  ₹ {props.mrp}
+                </Text>:null}
+                {((props.mrp - props.price)/props.mrp * 100) > 0
+                ?<Text style={styles.price}>
+                  {'  '}{((props.mrp - props.price)/props.mrp * 100).toFixed(2)}%
+                </Text>:null}
                 </Text>
             </View>
             <View style={styles.actions}>
