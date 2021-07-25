@@ -23,12 +23,14 @@ import SnackScreen from '../Source/Screens/SnackScreen';
 import StaplesScreen from '../Source/Screens/StaplesScreen';
 import HouseholeScreen from '../Source/Screens/HouseholdScreen';
 import SearchScreen from '../Source/Screens/SearchScreen';
+import OtpScreen from '../Source/Screens/OtpScreen';
 
 const AuthStack = createStackNavigator();
 const AuthFlow = () => (
     <AuthStack.Navigator>
         <AuthStack.Screen name='LogIn' component={LogInScreen} 
         options={{title: 'Log In', headerTitleAlign: 'center'}}/>
+        <AuthStack.Screen name='Otp' component={OtpScreen}/>
         <AuthStack.Screen name='SignUp' component={SignUpScreen} 
         options={{title: 'Sign Up', headerTitleAlign: 'center'}}/>
     </AuthStack.Navigator>

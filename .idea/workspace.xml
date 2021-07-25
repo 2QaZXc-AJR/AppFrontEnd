@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0fd0f02-99d8-4ad0-87e4-e12d407371d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="d0fd0f02-99d8-4ad0-87e4-e12d407371d4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +36,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="363" y="104" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1625130207871">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="363" y="104" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1625130207871" />
     <state x="110" y="120" width="1146" height="498" key="AVDManager" timestamp="1621281932849">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
