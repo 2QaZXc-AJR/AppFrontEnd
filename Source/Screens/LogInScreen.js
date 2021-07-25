@@ -8,6 +8,7 @@ export default function LogInScreen({ navigation }) {
     const logInAction = () => {
         console.log(phone);
         const response = fetch (`http://localhost:8080/api/login/${phone}`);
+        navigation.navigate("Otp", {Screen: "OtpScreen"})
         console.log(response);
         setPhone('');
     }
@@ -15,7 +16,6 @@ export default function LogInScreen({ navigation }) {
     const signUpAction = () => {
         navigation.navigate("SignUp", {Screen: "SignUpScreen"});
     }
-    const [token, setToken] = useState('');
     const [phone, setPhone] = useState('');
     return(
         <View Style={styles.container}>
